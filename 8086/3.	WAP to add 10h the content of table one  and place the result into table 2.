@@ -1,0 +1,21 @@
+.model small
+.stack 64h 
+.data
+table1 db 10h,20h,30h,40h,50h,60h,70h,80h,90h,95h
+table2 db 10 dup(?)
+.code
+main proc   
+    mov ax,@data
+    mov ds,ax
+    mov cx,10
+    lea si,table1
+    lea di,table2
+    up:mov bl,[si]
+    add bl,10
+    mov [di],bl
+    inc si
+    inc di
+    loop up
+    int 21
+    main endp
+    end main
