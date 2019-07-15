@@ -1,0 +1,16 @@
+.model small
+.stack 64h 
+.data
+num1 dw 1234h
+num2 dw 4567h
+num3 dw ?
+.code
+main proc   
+    mov ax,@data
+    mov ds,ax
+    mov bx,num1
+    add bx,num2
+    mov num3,bx
+    int 21
+    main endp
+    end main
