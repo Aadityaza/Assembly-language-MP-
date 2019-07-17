@@ -1,0 +1,21 @@
+.model small
+.stack 64h
+.data
+TABLE  DB 0, 2, 0, 2, 0, 0, 4, 0, 0, 1
+TABLE1 DB 1, 5, 6, 2, 0,8, 4, 6, 5, 2
+ 
+
+.code
+main proc
+    MOV ax,@data
+    MOV ds,ax
+    lea si,TABLE
+    lea di,TABLE1
+    MOV cl,10
+    up:mov bl,[si] 
+    ADD bl,[di]
+    MOV [di],bl
+    inc si
+    inc di
+    loop up
+    end main
