@@ -1,0 +1,48 @@
+.model small
+.stack 64h
+.data 
+namee db 'Aaditya'
+
+
+.code
+main proc
+    mov ax,@data
+mov ds,ax
+
+
+;clearing screen
+mov ah,06h
+mov al,00h
+mov bh,14h
+mov cx,0000h
+mov dx,184fh
+int 10h  
+
+;cursor locate
+mov ah,02h
+mov bh,00h  
+mov dh,08h
+mov dl,0fh
+int 10h
+
+
+
+;str disp
+mov cx,07h;
+lea si ,namee
+up: mov  ah,02h 
+
+mov dl,[si]
+int 21h  
+inc si
+loop up
+;mov dx,offset name
+
+
+
+;prog termi
+
+mov ax,4c00h
+int 21h
+main endp
+end main
