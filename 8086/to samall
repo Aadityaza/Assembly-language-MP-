@@ -1,0 +1,25 @@
+.data
+str db 'MIcroprocessor is A FUNNY Subject'
+;length dw $-str-1
+.code
+main proc
+
+        mov ax,@data    
+        mov ds,ax
+        mov cx,34
+        lea si,str
+        up:mov dl,[si]   
+        cmp dl,' '
+        je down
+        cmp dl,'Z'
+        ja down
+        add dl,32
+        down: mov ah,02h
+        int 21h
+        inc si
+        loop up
+        
+        mov ax,4c00h
+        int 21h
+        main endp
+    end main
