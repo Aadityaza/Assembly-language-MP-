@@ -1,0 +1,31 @@
+.MODEL SMALL
+ .STACK 100H  
+ .data
+ str db 'Microprocessor is fun'
+
+ .CODE
+   MAIN PROC
+     mov ax,@data
+     mov ds,ax
+     lea si ,str
+ 
+     mov cl ,21h
+    mov bl,00h     
+     ;code for curor set
+     mov ah,02h
+     mov bh,00h
+     up:mov dh,bl
+     mov dl,00h
+     int 10h
+     
+     ;code for charecter diskplay
+     mov  ah,02h
+     mov dl,[si]
+     int 21h
+     inc si
+     inc bl
+     loop up
+     ;terminate
+
+   MAIN ENDP
+ END MAIN
