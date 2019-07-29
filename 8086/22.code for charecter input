@@ -1,0 +1,28 @@
+.model small
+.stack 64h 
+.data
+maxlen db 50
+actlen db ?
+str db 20 dup('$')
+.code
+main proc   
+    mov ax,@data
+    mov ds,ax
+   
+   mov ah,0ah
+   lea dx,maxlen
+   int 21h
+   mov bh,00h
+   mov dh,01h
+   mov dl,00h
+   int 10h
+   
+   
+   mov ah,09h 
+   lea dx,str
+   int 21h
+   
+   mov ax,4c00h
+    int 21
+    main endp
+    end main
