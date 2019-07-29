@@ -12,6 +12,9 @@ main proc
    mov ah,0ah
    lea dx,maxlen
    int 21h
+   
+ ;change cursor location
+  mov ah,02h
    mov bh,00h
    mov dh,01h
    mov dl,00h
