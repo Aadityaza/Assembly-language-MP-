@@ -1,0 +1,3 @@
+mov ah,10h
+int 21h
+input charecter is stores at al
