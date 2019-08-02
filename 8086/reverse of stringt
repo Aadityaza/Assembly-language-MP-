@@ -1,0 +1,39 @@
+.model small
+.stack 64h
+.data
+maxlen db 70
+actlen db ?
+str db 20 dup('$')
+.code
+ main proc
+    mov ax,@data 
+    mov ds,ax 
+    
+    mov ah,0AH
+    lea dx, maxlen
+    int 21h
+    
+    mov cl, actlen
+    mov ch, 00h
+ 
+    lea si,str 
+     
+    mov ah,02h
+    mov bh,00h
+    mov dh,01
+    mov dl,00
+    int 10h
+ 
+    ADD si,cx
+    up:dec si
+    mov dl,[si]
+    
+    
+    mov ah,02h
+    int 21h
+    loop up
+    
+   mov ax,4c00h
+   int 21h
+   main endp
+ end main
