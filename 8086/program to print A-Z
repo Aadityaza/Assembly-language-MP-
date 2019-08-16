@@ -1,0 +1,40 @@
+.model small
+.stack 64h
+.data 
+no db 0
+
+
+.code 
+space macro
+    mov ah,02h
+    mov dl,' '
+    int 21h
+    endm
+main proc
+    mov ax,@data
+mov ds,ax
+           
+mov bl,no 
+add bl,65
+
+mov cx,26
+
+
+
+up: mov  ah,02h 
+
+mov dl,bl
+int 21h  
+inc bl
+space
+loop up
+
+
+
+
+;prog termi
+
+mov ax,4c00h
+int 21h
+main endp
+end main
